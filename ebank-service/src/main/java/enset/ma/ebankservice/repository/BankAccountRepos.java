@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface BankAccountRepos extends JpaRepository<BankAccount,Long> {
+public interface BankAccountRepos extends JpaRepository<BankAccount,String> {
     List<BankAccount> findCustomerById(Long id);
 }
