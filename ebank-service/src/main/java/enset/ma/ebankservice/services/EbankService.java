@@ -4,6 +4,8 @@ import enset.ma.ebankservice.entity.BankAccount;
 import enset.ma.ebankservice.feign.CustomerRestClient;
 import enset.ma.ebankservice.model.Customer;
 import enset.ma.ebankservice.repository.BankAccountRepos;
+import org.springframework.ai.mcp.annotation.McpTool;
+import org.springframework.ai.mcp.annotation.McpToolParam;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -19,16 +21,18 @@ public class EbankService {
         this.customerRestClient = customerRestClient;
         this.bankAccountRepos = bankAccountRepos;
     }
-
+    @McpTool(description = "Get All Bank Account")
     public List<BankAccount> getAllBankAccount(){
         return bankAccountRepos.findAll();
     }
-    public BankAccount getBankAccountById(String id){
+    @McpTool(description = "Get A bank Account by his ID")
+    public BankAccount getBankAccountById(@McpToolParam(description = "Bank account Id") String id){
         BankAccount bankAccount=bankAccountRepos.findById(id).orElseThrow(()->new RuntimeException("BankAcount not found"));
         bankAccount.setCustomer(customerRestClient.getCustomerById(bankAccount.getCustomerId()));
         return bankAccount;
     }
-    public BankAccount save(BankAccount bankAccount){
+    @McpTool(description = "Save a new Bank Account")
+    public BankAccount save(@McpToolParam(description = "Bank Account to Save") BankAccount bankAccount){
         try {
             Customer customer=customerRestClient.getCustomerById(bankAccount.getCustomerId());
             bankAccount.setId(UUID.randomUUID().toString());
