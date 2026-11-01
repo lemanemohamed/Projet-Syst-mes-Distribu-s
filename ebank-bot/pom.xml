@@ -77,6 +77,18 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-starter-mcp-client</artifactId>
         </dependency>
+<!--        &lt;!&ndash; Source: https://mvnrepository.com/artifact/org.telegram/telegrambots-spring-boot-starter &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.telegram</groupId>-->
+<!--            <artifactId>telegrambots-spring-boot-starter</artifactId>-->
+<!--            <version>6.9.7.1</version>-->
+<!--        </dependency>-->
+        <!-- Source: https://mvnrepository.com/artifact/com.zgamelogic/spring-boot-starter-discord -->
+        <dependency>
+            <groupId>com.zgamelogic</groupId>
+            <artifactId>spring-boot-starter-discord</artifactId>
+            <version>5.0.4</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
